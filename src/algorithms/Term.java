@@ -16,4 +16,15 @@ public class Term {
 	{
 		return weight +"	"+ text; 
 	}
+	
+	//getters
+	public double getWeight()
+	{
+		return weight;
+	}
+	
+	public String getText()
+	{
+		return text;
+	}
 }

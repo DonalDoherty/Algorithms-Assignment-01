@@ -16,13 +16,7 @@ public class TermList
 
 	public TermList() throws IOException
 	{
-		
-	}
-	//method used for testing - REMOVE ASAP
-	public static void main(String[] args) throws IOException
-	{
-		TermList app = new TermList();
-		app.makeList();
+		makeList();
 	}
 	
 	public void makeList() throws IOException 
