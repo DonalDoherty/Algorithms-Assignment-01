@@ -11,5 +11,9 @@ public class Term {
 		this.weight = weight;
 		this.text = text;
 	}
-
+	
+	public String toString()
+	{
+		return weight +"	"+ text; 
+	}
 }
