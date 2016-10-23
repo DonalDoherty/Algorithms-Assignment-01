@@ -2,8 +2,8 @@ package algorithms;
 
 public class Term {
 	
-	public double weight;
-	public String text;
+	private double weight;
+	private String text;
 	
 	
 	public Term (double weight, String text)

@@ -5,12 +5,13 @@ import java.util.Scanner;
 
 public class Driver {
 	private Scanner input;
-	BruteAutoComplete brute;
+	private BruteAutoComplete brute;
 	
 	public Driver()
 	{
 		input = new Scanner(System.in);
 	}
+	
 	public static void main(String[] arg) throws IOException
 	{
 		Driver app = new Driver();
