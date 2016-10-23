@@ -5,13 +5,10 @@ import java.util.ArrayList;
 public class BruteAutoComplete implements AutoComplete {
 	TermList terms;
 	private ArrayList<String> results;
-	
-	public void setUp() throws IOException{
-		terms = new TermList();
-	}
-	
+
 	public BruteAutoComplete() throws IOException{
-		setUp();
+		terms = new TermList();
+		results = new ArrayList<String>();
 	}
    
 	// Returns the weight of the term, or 0.0 if no such term.
@@ -48,7 +45,7 @@ public class BruteAutoComplete implements AutoComplete {
 				if(check.startsWith(prefix))
 				{
 					matchFound = true;
-					return terms.termList.get(i).toString();
+					return terms.termList.get(i).getText();
 				}
 			}
 		}
@@ -61,17 +58,17 @@ public class BruteAutoComplete implements AutoComplete {
     // of weight).
 	@Override
 	public Iterable<String> matches(String prefix, int k) {
-		if(prefix != null && k<terms.termList.size())
+		if(prefix != null || k<terms.termList.size())
 		{
 			for(int i = 0; results.size()<k && i<terms.termList.size(); i++)
 			{
 				String check = terms.termList.get(i).getText();
-				if(check.startsWith(prefix))
+				if(check.startsWith(prefix) && results.size()<k)
 				{
-					results.add(terms.termList.get(i).toString());
+					results.add(terms.termList.get(i).getText());
 				}
-				return results;
 			}
+			return results;
 		}
 		return null;
 	}

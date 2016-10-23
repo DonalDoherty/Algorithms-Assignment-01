@@ -14,7 +14,7 @@ public class Term {
 	
 	public String toString()
 	{
-		return weight +"	"+ text; 
+		return text; 
 	}
 	
 	//getters
