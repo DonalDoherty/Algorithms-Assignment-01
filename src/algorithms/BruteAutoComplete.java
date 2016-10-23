@@ -8,7 +8,6 @@ public class BruteAutoComplete implements AutoComplete {
 
 	public BruteAutoComplete() throws IOException{
 		terms = new TermList();
-		results = new ArrayList<String>();
 	}
    
 	// Returns the weight of the term, or 0.0 if no such term.
@@ -58,7 +57,12 @@ public class BruteAutoComplete implements AutoComplete {
     // of weight).
 	@Override
 	public Iterable<String> matches(String prefix, int k) {
-		if(prefix != null || k<terms.termList.size())
+		results = new ArrayList<String>();
+		if(prefix == null)
+		{
+			return null;
+		}
+		if(k<terms.termList.size() && k>0)
 		{
 			for(int i = 0; results.size()<k && i<terms.termList.size(); i++)
 			{
@@ -68,9 +72,12 @@ public class BruteAutoComplete implements AutoComplete {
 					results.add(terms.termList.get(i).getText());
 				}
 			}
-			return results;
 		}
-		return null;
+		if(results.size()==0)
+		{
+			return null;
+		}
+		return results;
 	}
 
 }
