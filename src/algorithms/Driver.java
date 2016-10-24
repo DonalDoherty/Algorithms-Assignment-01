@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Driver {
 	private Scanner input;
 	private BruteAutoComplete brute;
-	
+	private Boolean bruteBuilt = false;	
 	public Driver()
 	{
 		input = new Scanner(System.in);
@@ -51,7 +51,13 @@ public class Driver {
 	
 	private void runBrute()throws IOException
 	{
+		//the boolean bruteBuilt is initialised at the start of the program as "false". 
+		if(bruteBuilt == false)
+		{
 		brute = new BruteAutoComplete();
+		}
+		//the boolean is changed to true, this increases speed on repeated reruns of the program, as it only has to read the list in from memory once.
+		bruteBuilt =  true;
 		System.out.println("Please enter string: ");
 		System.out.println("==>:  ");
 		String prefix = input.nextLine();
