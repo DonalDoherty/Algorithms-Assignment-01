@@ -9,10 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class BruteTest {
+	
 	private BruteAutoComplete brute;
-	private Term term1;
-	private Term term20;
-	private Term term9000;
 	private TermList terms;
 	private ArrayList<String> results1;
 	private ArrayList<String> results2;
@@ -22,9 +20,6 @@ public class BruteTest {
 	{
 		terms = new TermList();
 		brute = new BruteAutoComplete();
-		term1 = new Term(5627187200.0, "the");
-		term20 = new Term(520250100.0, "her");
-		term9000 = new Term(494696.0, "insulting");
 		//sets up an ArrayList of the top 5 matches for the "th" prefix
 		results1 = new ArrayList<String>();
 		results1.add(terms.termList.get(0).getText()); //adds the word "the"
@@ -67,9 +62,9 @@ public class BruteTest {
 	@Test
 	public void testBestMatch()
 	{
-		assertEquals(term1.toString(), brute.bestMatch("th"));
-		assertEquals(term20.toString(), brute.bestMatch("her"));
-		assertEquals(term9000.toString(), brute.bestMatch("insultin"));
+		assertEquals(terms.termList.get(0).getText(), brute.bestMatch("th"));
+		assertEquals(terms.termList.get(19).getText(), brute.bestMatch("her"));
+		assertEquals(terms.termList.get(8999).getText(), brute.bestMatch("insultin"));
 
 	}
 	
