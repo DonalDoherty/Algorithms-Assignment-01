@@ -20,7 +20,7 @@ public class BruteAutoComplete implements AutoComplete {
 			//checks all 10,000 words against entered term
 			for(int i = 0; i<terms.termList.size(); i++)
 			{
-				if(term.equals(terms.termList.get(i).getText()))
+				if(term.equalsIgnoreCase(terms.termList.get(i).getText()))
 				{
 					return terms.termList.get(i).getWeight();
 				}
@@ -37,13 +37,10 @@ public class BruteAutoComplete implements AutoComplete {
 	{
 		if(prefix != null)
 		{
-			Boolean matchFound = false;
-			for(int i = 0; matchFound != true && i<terms.termList.size(); i++)
+			for(int i = 0; i<terms.termList.size(); i++)
 			{
-				String check = terms.termList.get(i).getText();
-				if(check.startsWith(prefix))
+				if(terms.termList.get(i).getText().startsWith(prefix.toLowerCase()))
 				{
-					matchFound = true;
 					return terms.termList.get(i).getText();
 				}
 			}
@@ -66,8 +63,7 @@ public class BruteAutoComplete implements AutoComplete {
 		{
 			for(int i = 0; results.size()<k && i<terms.termList.size(); i++)
 			{
-				String check = terms.termList.get(i).getText();
-				if(check.startsWith(prefix) && results.size()<k)
+				if(terms.termList.get(i).getText().startsWith(prefix.toLowerCase()) && results.size()<k)
 				{
 					results.add(terms.termList.get(i).getText());
 				}
